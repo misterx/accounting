@@ -7,17 +7,10 @@ interface CurrencyAmountInterface
 {
 
     /**
-     * Currency identifier
-     * @return mixed
+     * Amount currency
+     * @return CurrencyInterface
      */
-    public function getId();
-
-    /**
-     * Currency rate
-     * @return float
-     */
-    public function getRate():float;
-
+    public function getCurrency(): CurrencyInterface;
 
     /**
      * Currency amount

@@ -34,4 +34,11 @@ interface LedgerInterface
      * @return mixed
      */
     public function removeTransaction(TransactionInterface $transaction);
+
+
+    /**
+     * Account balance
+     * @return CurrencyAmountInterface
+     */
+    public function accountBalance(): CurrencyAmountInterface;
 }
