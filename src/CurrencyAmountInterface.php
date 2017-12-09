@@ -14,9 +14,9 @@ interface CurrencyAmountInterface
 
     /**
      * Currency rate
-     * @return mixed
+     * @return float
      */
-    public function getRate();
+    public function getRate():float;
 
 
     /**
