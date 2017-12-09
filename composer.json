@@ -1,0 +1,16 @@
+{
+  "name": "misterx/accounting",
+  "description": "Simple accounting design",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "MisterX\\Accounting\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.3"
+  }
+}
