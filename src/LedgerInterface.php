@@ -9,36 +9,46 @@ interface LedgerInterface
     /**
      * Save transaction into ledger
      * @param TransactionInterface $transaction
-     * @return mixed
      */
-    public function addTransaction(TransactionInterface $transaction):TransactionInterface;
+    public function addTransaction(TransactionInterface $transaction);
+
 
     /**
-     * Get transaction by ID
+     * Get transaction
      * @param $transactionId
-     * @return TransactionInterface
+     * @return mixed
      */
     public function getTransaction($transactionId):TransactionInterface;
 
-
-    /**
-     * Update existing transaction
-     * @param TransactionInterface $transaction
-     * @return TransactionInterface
-     */
-    public function updateTransaction(TransactionInterface $transaction):TransactionInterface;
-
     /**
      * Remove transaction
-     * @param TransactionInterface $transaction
+     * @param $transactionId
      * @return mixed
      */
-    public function removeTransaction(TransactionInterface $transaction);
-
+    public function removeTransaction($transactionId);
 
     /**
      * Account balance
-     * @return CurrencyAmountInterface
+     * @param AccountInterface $account
+     * @param bool $inLedgerCurrency
+     * @return float
      */
-    public function accountBalance(): CurrencyAmountInterface;
+    public function accountBalance(AccountInterface $account, bool $inLedgerCurrency): float;
+
+    /**
+     * @return ReferenceFinderInterface
+     */
+    public function getReferenceFinder(): ReferenceFinderInterface;
+
+    /**
+     * @param \DateTimeInterface $date
+     * @return CurrencyConverterInterface
+     */
+    public function getCurrencyConverter(\DateTimeInterface $date): CurrencyConverterInterface;
+
+    /**
+     * Get this leger currency
+     * @return CurrencyInterface
+     */
+    public function getLedgerCurrency(): CurrencyInterface;
 }

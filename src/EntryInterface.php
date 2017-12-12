@@ -19,9 +19,9 @@ interface EntryInterface
 
     /**
      * Amount currency
-     * @return CurrencyAmountInterface
+     * @return float
      */
-    public function getCurrencyAmount():CurrencyAmountInterface;
+    public function getAmount(): float;
 
     /**
      * Entry references

@@ -28,4 +28,10 @@ interface TransactionInterface
      * @return EntryInterface[]
      */
     public function getEntries():array;
+
+    /**
+     * Transaction timestamp
+     */
+
+    public function getTimestamp(): \DateTimeInterface;
 }

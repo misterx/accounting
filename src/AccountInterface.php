@@ -15,4 +15,5 @@ interface AccountInterface
      * @return CurrencyInterface
      */
     public function getCurrency(): CurrencyInterface;
+
 }
