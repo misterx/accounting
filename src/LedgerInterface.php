@@ -3,6 +3,8 @@
 namespace MisterX\Accounting;
 
 
+use Money\Money;
+
 interface LedgerInterface
 {
 
@@ -22,6 +24,7 @@ interface LedgerInterface
 
     /**
      * Remove transaction
+     * This will affect all balances after removed transaction dates
      * @param $transactionId
      * @return mixed
      */
@@ -30,25 +33,13 @@ interface LedgerInterface
     /**
      * Account balance
      * @param AccountInterface $account
-     * @param bool $inLedgerCurrency
-     * @return float
+     * @return Money
      */
-    public function accountBalance(AccountInterface $account, bool $inLedgerCurrency): float;
+    public function accountBalance(AccountInterface $account): Money;
 
     /**
      * @return ReferenceFinderInterface
      */
     public function getReferenceFinder(): ReferenceFinderInterface;
 
-    /**
-     * @param \DateTimeInterface $date
-     * @return CurrencyConverterInterface
-     */
-    public function getCurrencyConverter(\DateTimeInterface $date): CurrencyConverterInterface;
-
-    /**
-     * Get this leger currency
-     * @return CurrencyInterface
-     */
-    public function getLedgerCurrency(): CurrencyInterface;
 }

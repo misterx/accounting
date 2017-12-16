@@ -3,6 +3,8 @@
 namespace MisterX\Accounting;
 
 
+use Money\Money;
+
 class Entry implements EntryInterface
 {
     /** @var AccountInterface */
@@ -18,10 +20,16 @@ class Entry implements EntryInterface
     /** @var string */
     private $description;
 
-    public function __construct(AccountInterface $debitAccount, AccountInterface $creditAccount, float $amount)
+    /** @var  Money */
+    private $entryCurrency;
+
+    public function __construct(AccountInterface $debitAccount, AccountInterface $creditAccount, int $amount)
     {
         $this->validateAccounts($debitAccount, $creditAccount);
         $this->validateAmount($amount);
+
+        $this->entryCurrency = $debitAccount->getCurrency();
+
         $this->debitAccount = $debitAccount;
         $this->creditAccount = $creditAccount;
         $this->amount = $amount;
@@ -29,13 +37,14 @@ class Entry implements EntryInterface
 
     private function validateAccounts(AccountInterface $debitAccount, AccountInterface $creditAccount)
     {
-        if ($debitAccount == $creditAccount) {
+        if ($debitAccount->getId() === $creditAccount->getId()) {
             throw new \LogicException('Using same accounts in one entry are incorrect');
         }
 
-        if ($debitAccount->getCurrency() != $creditAccount->getCurrency()) {
+        if (!$debitAccount->getCurrency()->equals($creditAccount->getCurrency())) {
             throw new \LogicException('Currency in both accounts must be same');
         }
+
     }
 
     private function validateAmount(float $amount)
@@ -56,9 +65,9 @@ class Entry implements EntryInterface
         return $this->creditAccount;
     }
 
-    public function getAmount(): float
+    public function getAmount(): Money
     {
-        return $this->amount;
+        return new Money($this->amount, $this->entryCurrency);
     }
 
     public function getReferences(): array

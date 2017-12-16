@@ -3,6 +3,8 @@
 namespace MisterX\Accounting;
 
 
+use Money\Currency;
+
 interface AccountInterface
 {
     /**
@@ -12,8 +14,8 @@ interface AccountInterface
 
     /**
      * Account currency
-     * @return CurrencyInterface
+     * @return Currency
      */
-    public function getCurrency(): CurrencyInterface;
+    public function getCurrency(): Currency;
 
 }

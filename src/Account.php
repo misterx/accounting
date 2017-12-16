@@ -3,6 +3,8 @@
 namespace MisterX\Accounting;
 
 
+use Money\Currency;
+
 class Account implements AccountInterface
 {
     /**
@@ -10,11 +12,11 @@ class Account implements AccountInterface
      */
     private $id;
     /**
-     * @var CurrencyInterface
+     * @var Currency
      */
     private $currency;
 
-    public function __construct($id, CurrencyInterface $currency)
+    public function __construct($id, Currency $currency)
     {
 
         $this->id = $id;
@@ -26,7 +28,7 @@ class Account implements AccountInterface
         return $this->id;
     }
 
-    public function getCurrency(): CurrencyInterface
+    public function getCurrency(): Currency
     {
         return $this->currency;
     }

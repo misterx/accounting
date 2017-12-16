@@ -4,8 +4,8 @@ namespace MisterX\Accounting\Tests;
 
 
 use MisterX\Accounting\Account;
-use MisterX\Accounting\Currency;
 use MisterX\Accounting\Entry;
+use Money\Currency;
 
 class EntryTest extends \PHPUnit_Framework_TestCase
 {

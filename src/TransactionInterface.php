@@ -18,20 +18,13 @@ interface TransactionInterface
     public function getDescription():?string;
 
     /**
-     * Transaction owner
-     * @return TransactionOwnerInterface|null
-     */
-    public function getOwner():?TransactionOwnerInterface;
-
-    /**
      * Transaction entries
-     * @return EntryInterface[]
+     * @return \Traversable
      */
-    public function getEntries():array;
+    public function getEntries(): \Traversable;
 
     /**
      * Transaction timestamp
      */
-
     public function getTimestamp(): \DateTimeInterface;
 }

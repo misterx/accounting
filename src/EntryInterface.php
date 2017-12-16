@@ -3,6 +3,8 @@
 namespace MisterX\Accounting;
 
 
+use Money\Money;
+
 interface EntryInterface
 {
     /**
@@ -12,16 +14,16 @@ interface EntryInterface
     public function getDebitAccount():AccountInterface;
 
     /**
-     * Creadit account
+     * Credit account
      * @return AccountInterface
      */
     public function getCreditAccount():AccountInterface;
 
     /**
      * Amount currency
-     * @return float
+     * @return Money
      */
-    public function getAmount(): float;
+    public function getAmount(): Money;
 
     /**
      * Entry references

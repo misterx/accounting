@@ -10,9 +10,6 @@ class Transaction implements TransactionInterface
     /** @var  string */
     private $description;
 
-    /** @var  TransactionOwnerInterface */
-    private $owner;
-
     /** @var  EntryInterface[] */
     private $entries;
     /**
@@ -52,27 +49,14 @@ class Transaction implements TransactionInterface
         return $this->description;
     }
 
-    public function getOwner():?TransactionOwnerInterface
-    {
-        return $this->owner;
-    }
-
-    /**
-     * @param TransactionOwnerInterface $owner
-     */
-    public function setOwner(TransactionOwnerInterface $owner)
-    {
-        $this->owner = $owner;
-    }
-
     public function addEntry(EntryInterface $entry)
     {
         $this->entries[] = $entry;
     }
 
-    public function getEntries(): array
+    public function getEntries(): \Traversable
     {
-        return $this->entries;
+        return new \ArrayObject($this->entries);
     }
 
 
